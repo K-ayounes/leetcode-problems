@@ -3,26 +3,42 @@ from string import printable
 from typing import List  # type: ignore
 
 sys.path.append("..")
-from leetcode.util import debug_print, display_test_case, set_flag_debug  # type: ignore
+from leetcode_75.util import (  # type: ignore
+    debug_print,
+    display_test_case,
+    set_flag_debug,
+)
 
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prefix = [1] * len(nums)
-        suffix = [1] * len(nums)
+        l = len(nums)
 
-        debug_print(f"{prefix=}")
-        debug_print(f"{suffix=}")
+        answer = [1] * l
 
-        return []
+        prefix = [1] * l
+        suffix = [1] * l
+        prefix[0] = nums[0]
+        suffix[-1] = nums[-1]
+
+        for i in range(1, l):
+            prefix[i] = nums[i] * prefix[i - 1]
+        for i in range(l - 2, -1, -1):
+            suffix[i] = nums[i] * suffix[i + 1]
+
+        for i in range(1, l):
+            answer[i] *= prefix[i - 1]
+            answer[i - 1] *= suffix[i]
+
+        return answer
 
 
 test_cases = [
     (
-        # example: ([1,2,3,4], [24,12,8,6])
         [1, 2, 3, 4],
         [24, 12, 8, 6],
-    )
+    ),
+    ([-1, 1, 0, -3, 3], [0, 0, 9, 0, 0]),
 ]
 
 s = Solution()
