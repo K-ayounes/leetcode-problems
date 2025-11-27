@@ -110,7 +110,7 @@ solution_py_path = os.path.join(dir_name, "solution.py")
 solution_template = """import sys
 
 sys.path.append("..")
-from leetcode.util import debug_print, display_test_case, set_flag_debug  # type: ignore
+from leetcode_75.util import debug_print, display_test_case, set_flag_debug  # type: ignore
 
 
 class Solution:

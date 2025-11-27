@@ -1,7 +1,11 @@
 import sys
 
 sys.path.append("..")
-from leetcode.util import debug_print, display_test_case, set_flag_debug  # type: ignore
+from leetcode_75.util import (  # type: ignore
+    debug_print,
+    display_test_case,
+    set_flag_debug,
+)
 
 
 class Solution:

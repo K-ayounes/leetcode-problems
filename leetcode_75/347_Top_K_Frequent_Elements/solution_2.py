@@ -3,7 +3,7 @@ from collections import defaultdict
 from typing import List  # type: ignore
 
 sys.path.append("..")
-from leetcode.util import display_test_case  # type: ignore
+from leetcode_75.util import display_test_case  # type: ignore
 
 
 class Solution:
