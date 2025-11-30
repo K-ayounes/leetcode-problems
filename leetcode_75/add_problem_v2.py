@@ -47,11 +47,10 @@ for i, line in enumerate(lines):
             followup_pointer = i
             continue
 
-
 description = lines[description_pointer:examples_pointer]
 examples = lines[examples_pointer:constraints_pointer]
 constraints = lines[constraints_pointer:followup_pointer]
-followup = lines[followup_pointer:]
+followup = "" if followup_pointer is None else lines[followup_pointer:]
 
 description_md = ["**Description**", ""]
 for line in description:
@@ -93,6 +92,7 @@ final_md.append("")
 final_md.extend(followup_md)
 final_md.append("")
 
+
 # Write to a single file
 with open(f"{dir_name}/problem.md", "w", encoding="utf-8") as f:
     f.write("\n".join(final_md))
@@ -133,7 +133,7 @@ for index, (test_case, expected) in enumerate(test_cases):
     output = s.
     print("got:", output)
     passed = set(output) == set(expected)
-    print("Result  :", "✅ Pass" if passed else "❌ Fail")
+    print("Result  :", "✅ Pass" if passed else "📛 Fail")
 """
 
 with open(solution_py_path, "w", encoding="utf-8") as f:
