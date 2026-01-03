@@ -6,7 +6,8 @@ def display_test_case(test_case, expected, index):
         f"""
 {f"# {index}" if index else ""}
 Test Case: {test_case}
-Expected: {expected}
+Expected:
+         {expected}
 """,
         end="",
     )
